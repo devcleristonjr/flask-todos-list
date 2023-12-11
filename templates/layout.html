@@ -1,0 +1,57 @@
+<!-- layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>{% block title %}Todo App{% endblock %}</title>
+    <style>
+        body {
+            background-color: #121212; /* Cor de fundo para o corpo da página */
+            color: #ffffff;
+        }
+
+        .navbar {
+            background-color: #007bff !important; /* Cor de fundo para a navbar */
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ffffff !important; /* Cor dos links na navbar */
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            background-color: #ffffff; /* Cor do ícone do botão de toggler (hamburguer) */
+        }
+
+        input[type="text"] {
+            background-color: #dee2e6; /* Cor de fundo da barra de entrada de texto */
+            color: #495057; /* Cor do texto na barra de entrada de texto */
+        }
+    </style>
+</head>
+<body class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Todo App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('add_todo') }}">Add Todo</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

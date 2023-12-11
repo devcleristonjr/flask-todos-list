@@ -1,0 +1,20 @@
+<!-- templates/add_todo.html -->
+
+{% extends 'layout.html' %}
+
+{% block title %}Add Todo{% endblock %}
+
+{% block content %}
+    <h1>Add Todo</h1>
+    <form action="{{ url_for('add_todo') }}" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" name="description" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Todo</button>
+    </form>
+{% endblock %}

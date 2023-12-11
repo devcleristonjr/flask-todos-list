@@ -1,0 +1,7 @@
+/* static/style.css */
+
+/* Estilo para o botão de "check" */
+input[type="checkbox"] {
+    transform: scale(1.5); /* Ajuste o tamanho conforme necessário */
+}
+

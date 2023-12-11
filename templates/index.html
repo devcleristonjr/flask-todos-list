@@ -1,0 +1,45 @@
+<!-- templates/index.html -->
+
+{% extends 'layout.html' %}
+
+{% block title %}Todo List{% endblock %}
+
+{% block content %}
+    <h1>Todo List</h1>
+    <ul class="list-group">
+        {% for todo in todos %}
+            <li class="list-group-item d-flex justify-content-between align-items-center {% if todo['done'] %}list-group-item-danger{% else %}list-group-item-success{% endif %}">
+                <div>
+                    <span {% if todo['done'] %}style="text-decoration: line-through"{% endif %}>
+                        {{ todo['name'] }} - {{ todo['description'] }}
+                    </span>
+                </div>
+                <div class="status">
+                    {% if todo['done'] %}
+                        <span class="badge badge-danger">Finalizado</span>
+                    {% else %}
+                        <span class="badge badge-success">Aberto</span>
+                    {% endif %}
+                </div>
+                <div>
+                    <a href="{{ url_for('edit', index=loop.index0) }}" class="btn btn-info btn-sm ml-2">Edit</a>
+                    <a href="{{ url_for('delete', index=loop.index0) }}" class="btn btn-danger btn-sm ml-2">Delete</a>
+                    {% if not todo['done'] %}
+                        <a href="{{ url_for('check', index=loop.index0) }}" class="btn btn-success btn-sm ml-2">Finalizar</a>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <form action="{{ url_for('add_todo') }}" method="post" class="form-inline mt-3">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="form-control mr-2">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" name="description" class="form-control mr-2">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Todo</button>
+    </form>
+{% endblock %}
